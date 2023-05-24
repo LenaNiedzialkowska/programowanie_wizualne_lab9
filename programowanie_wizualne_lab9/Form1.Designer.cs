@@ -70,6 +70,7 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             label1 = new Label();
             label2 = new Label();
+            listView1 = new ListView();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -79,24 +80,25 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(textBox1, 0, 1);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 2);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 0);
+            tableLayoutPanel1.Controls.Add(textBox1, 0, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 3);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
+            tableLayoutPanel1.Controls.Add(listView1, 0, 0);
             tableLayoutPanel1.Location = new Point(12, 12);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.69230747F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.9856892F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 75F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(640, 521);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            tableLayoutPanel1.Size = new Size(640, 559);
             tableLayoutPanel1.TabIndex = 0;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI Semibold", 17F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(3, 81);
+            textBox1.Location = new Point(3, 113);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(634, 45);
             textBox1.TabIndex = 0;
@@ -148,7 +150,7 @@
             tableLayoutPanel2.Controls.Add(buttonXToY, 4, 4);
             tableLayoutPanel2.Controls.Add(buttonPercent, 5, 4);
             tableLayoutPanel2.Controls.Add(buttonNPower, 6, 4);
-            tableLayoutPanel2.Location = new Point(3, 133);
+            tableLayoutPanel2.Location = new Point(3, 169);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -156,7 +158,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Size = new Size(634, 385);
+            tableLayoutPanel2.Size = new Size(634, 387);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // button20
@@ -167,7 +169,7 @@
             button20.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             button20.Location = new Point(273, 311);
             button20.Name = "button20";
-            button20.Size = new Size(84, 71);
+            button20.Size = new Size(84, 73);
             button20.TabIndex = 19;
             button20.Text = "=";
             button20.UseVisualStyleBackColor = false;
@@ -181,7 +183,7 @@
             button19.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             button19.Location = new Point(183, 311);
             button19.Name = "button19";
-            button19.Size = new Size(84, 71);
+            button19.Size = new Size(84, 73);
             button19.TabIndex = 18;
             button19.Text = ",";
             button19.UseVisualStyleBackColor = false;
@@ -195,7 +197,7 @@
             button18.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             button18.Location = new Point(93, 311);
             button18.Name = "button18";
-            button18.Size = new Size(84, 71);
+            button18.Size = new Size(84, 73);
             button18.TabIndex = 17;
             button18.Text = "0";
             button18.UseVisualStyleBackColor = false;
@@ -209,7 +211,7 @@
             button17.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             button17.Location = new Point(3, 311);
             button17.Name = "button17";
-            button17.Size = new Size(84, 71);
+            button17.Size = new Size(84, 73);
             button17.TabIndex = 16;
             button17.Text = "+/-";
             button17.UseVisualStyleBackColor = false;
@@ -618,7 +620,7 @@
             buttonXToY.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             buttonXToY.Location = new Point(363, 311);
             buttonXToY.Name = "buttonXToY";
-            buttonXToY.Size = new Size(84, 71);
+            buttonXToY.Size = new Size(84, 73);
             buttonXToY.TabIndex = 33;
             buttonXToY.Text = "x^y";
             buttonXToY.UseVisualStyleBackColor = false;
@@ -632,7 +634,7 @@
             buttonPercent.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             buttonPercent.Location = new Point(453, 311);
             buttonPercent.Name = "buttonPercent";
-            buttonPercent.Size = new Size(84, 71);
+            buttonPercent.Size = new Size(84, 73);
             buttonPercent.TabIndex = 32;
             buttonPercent.Text = "%";
             buttonPercent.UseVisualStyleBackColor = false;
@@ -646,7 +648,7 @@
             buttonNPower.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             buttonNPower.Location = new Point(543, 311);
             buttonNPower.Name = "buttonNPower";
-            buttonNPower.Size = new Size(88, 71);
+            buttonNPower.Size = new Size(88, 73);
             buttonNPower.TabIndex = 34;
             buttonNPower.Text = "n!";
             buttonNPower.UseVisualStyleBackColor = false;
@@ -658,21 +660,21 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Controls.Add(label1, 0, 0);
             tableLayoutPanel3.Controls.Add(label2, 0, 1);
-            tableLayoutPanel3.Location = new Point(3, 3);
+            tableLayoutPanel3.Location = new Point(3, 46);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(634, 72);
+            tableLayoutPanel3.Size = new Size(634, 61);
             tableLayoutPanel3.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI Semibold", 13F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(164, 35);
+            label1.Size = new Size(142, 30);
             label1.TabIndex = 0;
             label1.Text = "Standardowy";
             label1.Click += label1_Click;
@@ -681,18 +683,26 @@
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Left;
-            label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 36);
+            label2.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(3, 30);
             label2.Name = "label2";
-            label2.Size = new Size(29, 36);
+            label2.Size = new Size(28, 31);
             label2.TabIndex = 1;
             label2.Text = "0";
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(3, 3);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(267, 37);
+            listView1.TabIndex = 4;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(657, 545);
+            ClientSize = new Size(657, 572);
             Controls.Add(tableLayoutPanel1);
             Name = "Form1";
             ShowIcon = false;
@@ -748,5 +758,6 @@
         private Button buttonXToY;
         private Button buttonPercent;
         private Button buttonNPower;
+        private ListView listView1;
     }
 }

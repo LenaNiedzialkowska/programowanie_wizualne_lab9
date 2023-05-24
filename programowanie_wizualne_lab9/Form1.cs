@@ -5,11 +5,13 @@ namespace programowanie_wizualne_lab9
 {
     public partial class Form1 : Form
     {
+        string history = "";
         bool newNumber = true;
         string sign;
         double num1;
         double num2;
         bool simple_calc = true;
+        bool xToYFlag = false;
         public Form1()
         {
             InitializeComponent();
@@ -17,7 +19,7 @@ namespace programowanie_wizualne_lab9
             if (simple_calc == true)
             {
                 this.textBox1.Size = new System.Drawing.Size(357, 45);
-                this.Size = new Size(393, 592);
+                this.Size = new Size(393, 620);
                 buttonLn.Hide();
                 buttonLog.Hide();
                 buttonSquareRoot.Hide();
@@ -34,7 +36,6 @@ namespace programowanie_wizualne_lab9
                 buttonNPower.Hide();
                 buttonAbsolute.Hide();
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -150,30 +151,43 @@ namespace programowanie_wizualne_lab9
         private void button20_Click(object sender, EventArgs e)
         {
             num2 = Convert.ToDouble(textBox1.Text);
-            label2.Text = String.Empty;
-            switch (sign)
+            history = label2.Text + textBox1.Text + "=";
+            if (xToYFlag == true)
             {
-                case "+":
-                    textBox1.Text = Convert.ToString(num1 + num2);
-                    break;
-                case "-":
-                    textBox1.Text = Convert.ToString(num1 - num2);
-                    break;
-                case "x":
-                    textBox1.Text = Convert.ToString(num1 * num2);
-                    break;
-                case "/":
-                    if (num2 == 0)
-                    {
-                        textBox1.Text = "Nie mo¿na dzieliæ przez 0";
-                    }
-                    else
-                    {
-                        textBox1.Text = Convert.ToString(num1 / num2);
-                    }
-                    break;
+                num1 = Math.Pow(num1, num2);
+                textBox1.Text = num1.ToString();
+                xToYFlag = false;
             }
-            sign = String.Empty;
+            else
+            {
+                label2.Text = String.Empty;
+                switch (sign)
+                {
+                    case "+":
+                        textBox1.Text = Convert.ToString(num1 + num2);
+                        break;
+                    case "-":
+                        textBox1.Text = Convert.ToString(num1 - num2);
+                        break;
+                    case "x":
+                        textBox1.Text = Convert.ToString(num1 * num2);
+                        break;
+                    case "/":
+                        if (num2 == 0)
+                        {
+                            textBox1.Text = "Nie mo¿na dzieliæ przez 0";
+                        }
+                        else
+                        {
+                            textBox1.Text = Convert.ToString(num1 / num2);
+                        }
+                        break;
+                }
+                sign = String.Empty;
+            }
+            history += textBox1.Text;
+            listView1.Items.Add(history);
+            history = "";
             newNumber = true;
         }
 
@@ -210,7 +224,7 @@ namespace programowanie_wizualne_lab9
             {
                 label1.Text = "Naukowy";
                 simple_calc = false;
-                this.Size = new Size(675, 592);
+                this.Size = new Size(675, 620);
                 this.textBox1.Size = new System.Drawing.Size(634, 45);
                 buttonLn.Show();
                 buttonLog.Show();
@@ -233,7 +247,7 @@ namespace programowanie_wizualne_lab9
                 label1.Text = "Standardowy";
                 simple_calc = true;
                 this.textBox1.Size = new System.Drawing.Size(357, 45);
-                this.Size = new Size(393, 592);
+                this.Size = new Size(393, 620);
                 buttonLn.Hide();
                 buttonLog.Hide();
                 buttonSquareRoot.Hide();
@@ -266,6 +280,8 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = Math.Log(num1);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonLog_Click(object sender, EventArgs e)
@@ -275,6 +291,8 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = Math.Log10(num1);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonSquareRoot_Click(object sender, EventArgs e)
@@ -284,6 +302,8 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = Math.Sqrt(num1);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void button10ToX_Click(object sender, EventArgs e)
@@ -293,10 +313,20 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = Math.Pow(10, num1);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonXToY_Click(object sender, EventArgs e)
         {
+            xToYFlag = true;
+            num1 = Convert.ToDouble(textBox1.Text);
+            label2.Text = textBox1.Text + "^";
+            newNumber = true;
+            textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
+            textBox1.Clear();
 
         }
 
@@ -307,6 +337,8 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = Math.Pow(num1, 2);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void button1ByX_Click(object sender, EventArgs e)
@@ -316,19 +348,29 @@ namespace programowanie_wizualne_lab9
             newNumber = true;
             num1 = 1 / num1;
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonAbsolute_Click(object sender, EventArgs e)
         {
-            label2.Text = "|"+textBox1.Text + "|";
+            label2.Text = "|" + textBox1.Text + "|";
             num1 = Convert.ToDouble(textBox1.Text);
             num1 = Math.Abs(num1);
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonExp_Click(object sender, EventArgs e)
         {
-
+            if (textBox1.Text.Length != 0)
+            {
+                num1 = Math.Exp(Convert.ToDouble(textBox1.Text));
+                textBox1.Text = Convert.ToString(num1);
+                history = label2.Text + "=" + textBox1.Text;
+                listView1.Items.Add(history);
+            }
         }
 
         private void buttonPercent_Click(object sender, EventArgs e)
@@ -337,6 +379,8 @@ namespace programowanie_wizualne_lab9
             num1 = Convert.ToDouble(textBox1.Text);
             num1 = num1 / 100;
             textBox1.Text = num1.ToString();
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonPi_Click(object sender, EventArgs e)
@@ -346,11 +390,7 @@ namespace programowanie_wizualne_lab9
 
         private void buttonE_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length != 0)
-            {
-                num1 = Math.Exp(Convert.ToDouble(textBox1.Text));
-                textBox1.Text = Convert.ToString(num1);
-            }
+            textBox1.Text = "2,71828182845";
         }
 
         private void buttonSin_Click(object sender, EventArgs e)
@@ -358,12 +398,16 @@ namespace programowanie_wizualne_lab9
             label2.Text = "sin(" + textBox1.Text + ")";
             num1 = Math.Sin(Convert.ToDouble(textBox1.Text));
             textBox1.Text = Convert.ToString(num1);
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
         private void buttonCos_Click(object sender, EventArgs e)
         {
-            label2.Text = "cos("+ textBox1.Text+")";
+            label2.Text = "cos(" + textBox1.Text + ")";
             num1 = Math.Cos(Convert.ToDouble(textBox1.Text));
             textBox1.Text = Convert.ToString(num1);
+            history = label2.Text + "=" + textBox1.Text;
+            listView1.Items.Add(history);
         }
 
         private void buttonNPower_Click(object sender, EventArgs e)
@@ -377,6 +421,8 @@ namespace programowanie_wizualne_lab9
                     fact = fact * i;
                 }
                 textBox1.Text = Convert.ToString(fact);
+                history = label2.Text + "=" + textBox1.Text;
+                listView1.Items.Add(history);
 
             }
             catch (Exception ex)
